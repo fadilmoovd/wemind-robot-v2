@@ -1,25 +1,471 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.13.3 on win32)" generated="20250805 11:32:33.258" rpa="false" schemaversion="4">
-<suite id="s1" name="Hello" source="C:\Users\DJ\Documents\projectan\robot-framework-wemind\hello.robot">
-<test id="s1-t1" name="Hello World" line="2">
-<kw name="Log" library="BuiltIn">
-<arg>Hello, Robot Framework!</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250805 11:32:33.310" level="INFO">Hello, Robot Framework!</msg>
-<status status="PASS" starttime="20250805 11:32:33.310" endtime="20250805 11:32:33.311"/>
+<robot generator="Robot 6.1.1 (Python 3.13.3 on win32)" generated="20250807 17:01:06.728" rpa="false" schemaversion="4">
+<suite id="s1" name="Exposure" source="C:\Users\DJ\Documents\projectan\robot-framework-wemind\WeMind\Exposure">
+<suite id="s1-s1" name="Exposure" source="C:\Users\DJ\Documents\projectan\robot-framework-wemind\WeMind\Exposure\exposure.robot">
+<kw name="Run Keywords" library="BuiltIn" type="SETUP">
+<arg>Open Browser And Login</arg>
+<arg>AND</arg>
+<arg>Set Test Date</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<kw name="Open Browser And Login" library="common_keywords">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${LOGIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20250807 17:01:07.481" level="INFO">Opening browser 'Chrome' to base url 'https://new.staging.we-mind.app/auth/actor?lang=us'.</msg>
+<status status="PASS" starttime="20250807 17:01:07.480" endtime="20250807 17:01:09.114"/>
 </kw>
-<status status="PASS" starttime="20250805 11:32:33.310" endtime="20250805 11:32:33.311"/>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20250807 17:01:09.114" endtime="20250807 17:01:09.164"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20250807 17:01:11.165" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20250807 17:01:09.164" endtime="20250807 17:01:11.166"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>xpath=//button[.//span[text()='I am a therapist']]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20250807 17:01:11.168" level="INFO">Clicking button 'xpath=//button[.//span[text()='I am a therapist']]'.</msg>
+<status status="PASS" starttime="20250807 17:01:11.166" endtime="20250807 17:01:11.259"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${field_email}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20250807 17:01:11.259" endtime="20250807 17:01:11.488"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${field_password}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20250807 17:01:11.488" endtime="20250807 17:01:11.506"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${btn_login}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20250807 17:01:11.506" endtime="20250807 17:01:11.524"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${field_email}</arg>
+<arg>${USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20250807 17:01:11.524" level="INFO">Typing text 'auto-cypress@moovd.nl' into text field 'xpath://input[@placeholder='Enter your email']'.</msg>
+<status status="PASS" starttime="20250807 17:01:11.524" endtime="20250807 17:01:11.819"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${field_password}</arg>
+<arg>${PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20250807 17:01:11.820" level="INFO">Typing text 'Test@1234' into text field 'xpath://input[@placeholder='Your password']'.</msg>
+<status status="PASS" starttime="20250807 17:01:11.819" endtime="20250807 17:01:11.950"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${btn_login}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20250807 17:01:11.951" level="INFO">Clicking button 'xpath://button[.//span[text()='Login']]'.</msg>
+<status status="PASS" starttime="20250807 17:01:11.950" endtime="20250807 17:01:12.021"/>
+</kw>
+<status status="PASS" starttime="20250807 17:01:07.480" endtime="20250807 17:01:12.021"/>
+</kw>
+<kw name="Set Test Date" library="common_keywords">
+<kw name="Get Current Date" library="DateTime">
+<var>${date}</var>
+<arg>result_format=%Y-%m-%d</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<msg timestamp="20250807 17:01:12.022" level="INFO">${date} = 2025-08-07</msg>
+<status status="PASS" starttime="20250807 17:01:12.022" endtime="20250807 17:01:12.022"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${TODAY}</arg>
+<arg>${date}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20250807 17:01:12.022" level="INFO">${TODAY} = 2025-08-07</msg>
+<status status="PASS" starttime="20250807 17:01:12.022" endtime="20250807 17:01:12.022"/>
+</kw>
+<status status="PASS" starttime="20250807 17:01:12.022" endtime="20250807 17:01:12.022"/>
+</kw>
+<status status="PASS" starttime="20250807 17:01:07.480" endtime="20250807 17:01:12.022"/>
+</kw>
+<test id="s1-s1-t1" name="Copy Link And Visit The Link" line="35">
+<kw name="Navigate To Exposure Session" type="SETUP">
+<doc>This keyword acts as the 'beforeEach' block from Cypress.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${START_SESSION_BUTTON}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20250807 17:01:12.023" endtime="20250807 17:01:13.788"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${START_SESSION_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20250807 17:01:13.789" level="INFO">Clicking element 'xpath=//button[.//span[text()='Start Quick Session']]'.</msg>
+<status status="PASS" starttime="20250807 17:01:13.789" endtime="20250807 17:01:13.847"/>
+</kw>
+<status status="PASS" starttime="20250807 17:01:12.023" endtime="20250807 17:01:13.847"/>
+</kw>
+<kw name="Copy Session Link">
+<var>${clipboard_link}</var>
+<doc>Clicks the 'Copy Link' button and retrieves the text from the clipboard.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${COPY_LINK_BUTTON}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20250807 17:01:13.848" endtime="20250807 17:01:14.772"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${COPY_LINK_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20250807 17:01:14.772" level="INFO">Clicking element 'xpath=(//span[@class='ng-star-inserted' and normalize-space(text())='Copy Link'])[1]'.</msg>
+<status status="PASS" starttime="20250807 17:01:14.772" endtime="20250807 17:01:14.860"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20250807 17:01:15.861" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20250807 17:01:14.861" endtime="20250807 17:01:15.862"/>
+</kw>
+<kw name="Get Clipboard Text" library="ClipboardLibrary">
+<var>${clipboard_text}</var>
+<msg timestamp="20250807 17:01:15.867" level="INFO">${clipboard_text} = https://new.staging.we-mind.app/client/session?sessionId=888038</msg>
+<status status="PASS" starttime="20250807 17:01:15.862" endtime="20250807 17:01:15.867"/>
+</kw>
+<msg timestamp="20250807 17:01:15.867" level="INFO">${clipboard_link} = https://new.staging.we-mind.app/client/session?sessionId=888038</msg>
+<status status="PASS" starttime="20250807 17:01:13.847" endtime="20250807 17:01:15.867"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Copied Link: ${clipboard_link}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250807 17:01:15.868" level="INFO">Copied Link: https://new.staging.we-mind.app/client/session?sessionId=888038</msg>
+<status status="PASS" starttime="20250807 17:01:15.868" endtime="20250807 17:01:15.868"/>
+</kw>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>${clipboard_link}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<msg timestamp="20250807 17:01:15.869" level="INFO">Length is 63</msg>
+<status status="PASS" starttime="20250807 17:01:15.869" endtime="20250807 17:01:15.869"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${clipboard_link}</arg>
+<arg>https://</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250807 17:01:15.870" endtime="20250807 17:01:15.870"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${clipboard_link}</arg>
+<arg>${SESSION_URL_PARTIAL}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250807 17:01:15.871" endtime="20250807 17:01:15.871"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20250807 17:01:17.872" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20250807 17:01:15.871" endtime="20250807 17:01:17.872"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${clipboard_link}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20250807 17:01:17.873" level="INFO">Opening browser 'chrome' to base url 'https://new.staging.we-mind.app/client/session?sessionId=888038'.</msg>
+<status status="PASS" starttime="20250807 17:01:17.873" endtime="20250807 17:01:19.118"/>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<arg>1280</arg>
+<arg>800</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" starttime="20250807 17:01:19.118" endtime="20250807 17:01:19.798"/>
+</kw>
+<kw name="Wait Until Location Contains" library="SeleniumLibrary">
+<arg>${SESSION_URL_PARTIAL}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" starttime="20250807 17:01:19.799" endtime="20250807 17:01:19.807"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Successfully visited the client session link in a new browser session.</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250807 17:01:19.808" level="INFO">Successfully visited the client session link in a new browser session.</msg>
+<status status="PASS" starttime="20250807 17:01:19.808" endtime="20250807 17:01:19.808"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//button[.//span[text()='Enter Session']]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20250807 17:01:19.809" level="INFO">Clicking element 'xpath=//button[.//span[text()='Enter Session']]'.</msg>
+<msg timestamp="20250807 17:01:19.946" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20250807 17:01:19.947" level="FAIL">Element with locator 'xpath=//button[.//span[text()='Enter Session']]' not found.</msg>
+<status status="FAIL" starttime="20250807 17:01:19.808" endtime="20250807 17:01:19.951"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20250807 17:01:19.952" endtime="20250807 17:01:19.952"/>
+</kw>
+<kw name="Wait Until Element Is Not Visible" library="SeleniumLibrary">
+<arg>xpath=//button[.//span[text()='Enter Session']]</arg>
+<arg>timeout=2s</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="NOT RUN" starttime="20250807 17:01:19.952" endtime="20250807 17:01:19.952"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Enter Session button is no longer visible.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20250807 17:01:19.952" endtime="20250807 17:01:19.952"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="NOT RUN" starttime="20250807 17:01:19.953" endtime="20250807 17:01:19.953"/>
+</kw>
+<kw name="Run Keywords" library="BuiltIn" type="TEARDOWN">
+<arg>Auto Screenshot If Failed</arg>
+<arg>AND</arg>
+<arg>Sleep</arg>
+<arg>1s</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<kw name="Auto Screenshot If Failed" library="common_keywords">
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<arg>Create Screenshot Directory And Capture</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<kw name="Create Screenshot Directory And Capture" library="common_keywords">
+<doc>Creates a dated directory and captures a screenshot upon failure.</doc>
+<kw name="Log To Console" library="BuiltIn">
+<arg>\n--- DEBUGGING SCREENSHOT ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20250807 17:01:19.955" endtime="20250807 17:01:19.956"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>[Mata-Mata] Nilai ${TODAY} adalah: '${TODAY}'</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20250807 17:01:19.956" endtime="20250807 17:01:19.956"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${dir}</var>
+<arg>results/${TODAY}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250807 17:01:19.957" level="INFO">${dir} = results/2025-08-07</msg>
+<status status="PASS" starttime="20250807 17:01:19.957" endtime="20250807 17:01:19.957"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>[Mata-Mata] Direktori yang akan dibuat: '${dir}'</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20250807 17:01:19.957" endtime="20250807 17:01:19.958"/>
+</kw>
+<kw name="Create Directory" library="OperatingSystem">
+<arg>${dir}</arg>
+<doc>Creates the specified directory.</doc>
+<msg timestamp="20250807 17:01:19.958" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\DJ\Documents\projectan\robot-framework-wemind\results\2025-08-07"&gt;C:\Users\DJ\Documents\projectan\robot-framework-wemind\results\2025-08-07&lt;/a&gt;' already exists.</msg>
+<status status="PASS" starttime="20250807 17:01:19.958" endtime="20250807 17:01:19.958"/>
+</kw>
+<kw name="Get Time" library="BuiltIn">
+<var>${time}</var>
+<arg>result_format=%H-%M</arg>
+<doc>Returns the given time in the requested format.</doc>
+<msg timestamp="20250807 17:01:19.959" level="INFO">${time} = 2025-08-07 17:01:19</msg>
+<status status="PASS" starttime="20250807 17:01:19.958" endtime="20250807 17:01:19.959"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${filename}</var>
+<arg>TES_GANTENG_BERHASIL_${time}.png</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250807 17:01:19.959" level="INFO">${filename} = TES_GANTENG_BERHASIL_2025-08-07 17:01:19.png</msg>
+<status status="PASS" starttime="20250807 17:01:19.959" endtime="20250807 17:01:19.959"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${screenshot_path}</var>
+<arg>${dir}/${filename}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250807 17:01:19.960" level="INFO">${screenshot_path} = results/2025-08-07/TES_GANTENG_BERHASIL_2025-08-07 17:01:19.png</msg>
+<status status="PASS" starttime="20250807 17:01:19.959" endtime="20250807 17:01:19.960"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>[Mata-Mata] Path screenshot lengkap: '${screenshot_path}'</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20250807 17:01:19.960" endtime="20250807 17:01:19.960"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>--- SELESAI DEBUGGING ---\n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20250807 17:01:19.960" endtime="20250807 17:01:19.963"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${screenshot_path}</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20250807 17:01:20.875" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20250807 17:01:20.875" level="FAIL">Failed to save screenshot 'C:\Users\DJ\Documents\projectan\robot-framework-wemind\results\2025-08-07\TES_GANTENG_BERHASIL_2025-08-07 17:01:19.png'.</msg>
+<status status="FAIL" starttime="20250807 17:01:19.963" endtime="20250807 17:01:20.876"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>[Screenshot saved to] ${screenshot_path}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20250807 17:01:20.876" endtime="20250807 17:01:20.876"/>
+</kw>
+<status status="FAIL" starttime="20250807 17:01:19.955" endtime="20250807 17:01:20.876"/>
+</kw>
+<status status="FAIL" starttime="20250807 17:01:19.955" endtime="20250807 17:01:20.877"/>
+</kw>
+<status status="FAIL" starttime="20250807 17:01:19.954" endtime="20250807 17:01:20.877"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20250807 17:01:21.877" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20250807 17:01:20.877" endtime="20250807 17:01:21.877"/>
+</kw>
+<status status="FAIL" starttime="20250807 17:01:19.954" endtime="20250807 17:01:21.877">Failed to save screenshot 'C:\Users\DJ\Documents\projectan\robot-framework-wemind\results\2025-08-07\TES_GANTENG_BERHASIL_2025-08-07 17:01:19.png'.</status>
+</kw>
+<tag>focus</tag>
+<tag>smoke</tag>
+<status status="FAIL" starttime="20250807 17:01:12.023" endtime="20250807 17:01:21.878">Element with locator 'xpath=//button[.//span[text()='Enter Session']]' not found.
+
+Also teardown failed:
+Failed to save screenshot 'C:\Users\DJ\Documents\projectan\robot-framework-wemind\results\2025-08-07\TES_GANTENG_BERHASIL_2025-08-07 17:01:19.png'.</status>
 </test>
-<status status="PASS" starttime="20250805 11:32:33.260" endtime="20250805 11:32:33.313"/>
+<test id="s1-s1-t2" name="Upload Media From Moovd Library" line="60">
+<kw name="Navigate To Exposure Session" type="SETUP">
+<doc>This keyword acts as the 'beforeEach' block from Cypress.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${START_SESSION_BUTTON}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<msg timestamp="20250807 17:01:32.213" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3.png"&gt;&lt;img src="selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20250807 17:01:32.213" level="FAIL">Element 'xpath=//button[.//span[text()='Start Quick Session']]' not visible after 10 seconds.</msg>
+<status status="FAIL" starttime="20250807 17:01:21.880" endtime="20250807 17:01:32.214"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${START_SESSION_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20250807 17:01:32.214" endtime="20250807 17:01:32.214"/>
+</kw>
+<status status="FAIL" starttime="20250807 17:01:21.880" endtime="20250807 17:01:32.214"/>
+</kw>
+<kw name="Run Keywords" library="BuiltIn" type="TEARDOWN">
+<arg>Auto Screenshot If Failed</arg>
+<arg>AND</arg>
+<arg>Sleep</arg>
+<arg>1s</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<kw name="Auto Screenshot If Failed" library="common_keywords">
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<arg>Create Screenshot Directory And Capture</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<kw name="Create Screenshot Directory And Capture" library="common_keywords">
+<doc>Creates a dated directory and captures a screenshot upon failure.</doc>
+<kw name="Log To Console" library="BuiltIn">
+<arg>\n--- DEBUGGING SCREENSHOT ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20250807 17:01:32.215" endtime="20250807 17:01:32.216"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>[Mata-Mata] Nilai ${TODAY} adalah: '${TODAY}'</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20250807 17:01:32.216" endtime="20250807 17:01:32.216"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${dir}</var>
+<arg>results/${TODAY}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250807 17:01:32.216" level="INFO">${dir} = results/2025-08-07</msg>
+<status status="PASS" starttime="20250807 17:01:32.216" endtime="20250807 17:01:32.216"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>[Mata-Mata] Direktori yang akan dibuat: '${dir}'</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20250807 17:01:32.217" endtime="20250807 17:01:32.217"/>
+</kw>
+<kw name="Create Directory" library="OperatingSystem">
+<arg>${dir}</arg>
+<doc>Creates the specified directory.</doc>
+<msg timestamp="20250807 17:01:32.217" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\DJ\Documents\projectan\robot-framework-wemind\results\2025-08-07"&gt;C:\Users\DJ\Documents\projectan\robot-framework-wemind\results\2025-08-07&lt;/a&gt;' already exists.</msg>
+<status status="PASS" starttime="20250807 17:01:32.217" endtime="20250807 17:01:32.217"/>
+</kw>
+<kw name="Get Time" library="BuiltIn">
+<var>${time}</var>
+<arg>result_format=%H-%M</arg>
+<doc>Returns the given time in the requested format.</doc>
+<msg timestamp="20250807 17:01:32.217" level="INFO">${time} = 2025-08-07 17:01:32</msg>
+<status status="PASS" starttime="20250807 17:01:32.217" endtime="20250807 17:01:32.218"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${filename}</var>
+<arg>TES_GANTENG_BERHASIL_${time}.png</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250807 17:01:32.218" level="INFO">${filename} = TES_GANTENG_BERHASIL_2025-08-07 17:01:32.png</msg>
+<status status="PASS" starttime="20250807 17:01:32.218" endtime="20250807 17:01:32.218"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${screenshot_path}</var>
+<arg>${dir}/${filename}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250807 17:01:32.218" level="INFO">${screenshot_path} = results/2025-08-07/TES_GANTENG_BERHASIL_2025-08-07 17:01:32.png</msg>
+<status status="PASS" starttime="20250807 17:01:32.218" endtime="20250807 17:01:32.218"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>[Mata-Mata] Path screenshot lengkap: '${screenshot_path}'</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20250807 17:01:32.218" endtime="20250807 17:01:32.218"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>--- SELESAI DEBUGGING ---\n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20250807 17:01:32.218" endtime="20250807 17:01:32.219"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${screenshot_path}</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20250807 17:01:32.587" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-4.png"&gt;&lt;img src="selenium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20250807 17:01:32.587" level="FAIL">Failed to save screenshot 'C:\Users\DJ\Documents\projectan\robot-framework-wemind\results\2025-08-07\TES_GANTENG_BERHASIL_2025-08-07 17:01:32.png'.</msg>
+<status status="FAIL" starttime="20250807 17:01:32.219" endtime="20250807 17:01:32.588"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>[Screenshot saved to] ${screenshot_path}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20250807 17:01:32.588" endtime="20250807 17:01:32.588"/>
+</kw>
+<status status="FAIL" starttime="20250807 17:01:32.215" endtime="20250807 17:01:32.588"/>
+</kw>
+<status status="FAIL" starttime="20250807 17:01:32.215" endtime="20250807 17:01:32.588"/>
+</kw>
+<status status="FAIL" starttime="20250807 17:01:32.215" endtime="20250807 17:01:32.588"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20250807 17:01:33.590" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20250807 17:01:32.589" endtime="20250807 17:01:33.590"/>
+</kw>
+<status status="FAIL" starttime="20250807 17:01:32.215" endtime="20250807 17:01:33.590">Failed to save screenshot 'C:\Users\DJ\Documents\projectan\robot-framework-wemind\results\2025-08-07\TES_GANTENG_BERHASIL_2025-08-07 17:01:32.png'.</status>
+</kw>
+<doc>Tests uploading a pre-existing media file from the Moovd library.</doc>
+<status status="FAIL" starttime="20250807 17:01:21.879" endtime="20250807 17:01:33.590">Setup failed:
+Element 'xpath=//button[.//span[text()='Start Quick Session']]' not visible after 10 seconds.
+
+Also teardown failed:
+Failed to save screenshot 'C:\Users\DJ\Documents\projectan\robot-framework-wemind\results\2025-08-07\TES_GANTENG_BERHASIL_2025-08-07 17:01:32.png'.</status>
+</test>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20250807 17:01:33.593" endtime="20250807 17:01:35.791"/>
+</kw>
+<doc>Test suite for the Exposure feature.
+This suite covers copying session links, uploading media,
+and verifying functionality.</doc>
+<status status="FAIL" starttime="20250807 17:01:07.202" endtime="20250807 17:01:35.791"/>
+</suite>
+<status status="FAIL" starttime="20250807 17:01:07.183" endtime="20250807 17:01:35.799"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="2" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="0" fail="1" skip="0">focus</stat>
+<stat pass="0" fail="1" skip="0">smoke</stat>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Hello">Hello</stat>
+<stat pass="0" fail="2" skip="0" id="s1" name="Exposure">Exposure</stat>
+<stat pass="0" fail="2" skip="0" id="s1-s1" name="Exposure">Exposure.Exposure</stat>
 </suite>
 </statistics>
 <errors>
