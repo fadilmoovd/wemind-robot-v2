@@ -3,14 +3,15 @@ Library         SeleniumLibrary
 Library         DateTime
 Library         OperatingSystem
 Library         RequestsLibrary
+Library         allure_robotframework
 
 *** Variables ***
 ${LOGIN_URL}        https://new.staging.we-mind.app/auth/actor?lang=us
 ${BROWSER}          Chrome
-${USERNAME}         auto-cypress@moovd.nl
-${PASSWORD}         Test@1234
+${USERNAME}         m.naufal+moovd+1@moovd.nl
+${PASSWORD}         @Test1122
 
-${SLACK_WEBHOOK_URL}    https://hooks.slack.com/services/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
+${SLACK_WEBHOOK_URL}    https://hooks.slack.com/services/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
 
 ${TODAY}    ${EMPTY}
 
@@ -20,7 +21,7 @@ ${btn_login}        xpath://button[.//span[text()='Login']]
 
 *** Keywords ***
 Open Browser And Login
-    Open Browser        ${LOGIN_URL}    ${BROWSER}
+    Open Browser        ${LOGIN_URL}    ${BROWSER}  alias=main_browser
     Maximize Browser Window
     Sleep               2s
     Click Button        xpath=//button[.//span[text()='I am a therapist']]
@@ -39,9 +40,6 @@ Auto Screenshot If Failed
     Run Keyword If Test Failed    Create Screenshot Directory And Capture
 
 Create Screenshot Directory And Capture
-    [Documentation]    Creates a dated directory and captures a screenshot upon failure.
-
-    # === MATA-MATA KITA MULAI DI SINI ===
     Log To Console    \n--- DEBUGGING SCREENSHOT ---
     Log To Console    [Mata-Mata] Nilai ${TODAY} adalah: '${TODAY}'
     
@@ -49,9 +47,9 @@ Create Screenshot Directory And Capture
     Log To Console    [Mata-Mata] Direktori yang akan dibuat: '${dir}'
     Create Directory    ${dir}
     
-    ${time}=    Get Time    result_format=%H-%M
-    # ${filename}=    Set Variable    ${TEST NAME}_${time}.png
-    ${filename}=    Set Variable    TES_GANTENG_BERHASIL_${time}.png
+    ${time}=    Get Current Date    result_format=%H_%M_%S
+    ${filename}=    Set Variable    ${TEST NAME}_${time}.png
+    # ${filename}=    Set Variable    TES_GANTENG_BERHASIL_${time}.png
     
     ${screenshot_path}=    Set Variable    ${dir}/${filename}
     Log To Console    [Mata-Mata] Path screenshot lengkap: '${screenshot_path}'
@@ -59,6 +57,7 @@ Create Screenshot Directory And Capture
 
     Capture Page Screenshot    ${screenshot_path}
     Log To Console    [Screenshot saved to] ${screenshot_path}
+    # Allure Attach File      ${screenshot_path}      name=Screenshot on Failure
 
 Send Slack Message
     [Arguments]    ${message}
@@ -73,8 +72,6 @@ Send Slack Message
     Log To Console    \nNotifikasi Slack Terkirim: ${response.status_code}
 
 Send Result Test
-    [Documentation]    Menyiapkan pesan laporan dan mengirimnya ke Slack.
-    
     ${status_emoji}=    Set Variable If    '${SUITE_STATUS}' == 'PASS'    ✅    ❌
 
     ${pesan_laporan}=   Set Variable

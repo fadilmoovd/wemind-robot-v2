@@ -1,17 +1,14 @@
 import requests
-# Impor pustaka yang diperlukan dari Robot Framework
 from robot.api import ExecutionResult, ResultVisitor
 
 class SlackTestResultListener:
     ROBOT_LISTENER_API_VERSION = 3
 
     def __init__(self):
-        self.webhook_url = "https://hooks.slack.com/services/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"
+        self.webhook_url = "https://hooks.slack.com/services/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"
         print("Listener Slack diinisialisasi dengan URL yang di-hardcode.")
 
-    # Gunakan metode output_file, bukan close. Metode ini dipanggil saat output.xml sudah siap.
     def output_file(self, path):
-        # Gunakan ExecutionResult untuk mem-parsing file output.xml
         result = ExecutionResult(path)
         stats = result.statistics.total
         
@@ -22,15 +19,15 @@ class SlackTestResultListener:
         # Logika Anda yang sudah ada tetap sama
         percentage = (passed / total) * 100 if total > 0 else 0
         
-        if failed == 0:
-            emoji = "✅ Lulus Semua"
-        elif passed == 0:
-            emoji = "❌ Gagal Total"
-        else:
-            emoji = "🟠 Lulus Sebagian"
+        # if failed == 0:
+        #     emoji = "✅ Passed All"
+        # elif passed == 0:
+        #     emoji = "❌ Failed All"
+        # else:
+        #     emoji = "🟠 Not All Passed"
 
         summary_message = (
-            f"*Summary Tests Report:* {emoji}\n"
+            f"*Summary Tests Report:*\n"
             f"- Passed     : {passed}\n"
             f"- Failed     : {failed}\n"
             f"*Total* : *{total}*\n"
